@@ -58,4 +58,5 @@ def retrain(): # Rutarlo al endpoint '/api/v1/retrain/', metodo GET
         return f"Model retrained. New evaluation metric RMSE: {str(rmse)}, MAPE: {str(mape)}"
     else:
         return f"<h2>New data for retrain NOT FOUND. Nothing done!</h2>"
-app.run()
+if __name__=="__main__":
+    app.run()
