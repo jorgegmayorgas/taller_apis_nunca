@@ -11,7 +11,7 @@ import numpy as np
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-root_path = "/home/jorgegmayorgas/talleres_api_nunca/"
+root_path = "/home/jorgegmayorgas/taller_apis_nunca/"
 # Enruta la landing page (endpoint /)
 @app.route('/', methods=['GET'])
 def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
