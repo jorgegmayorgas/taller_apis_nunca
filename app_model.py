@@ -17,7 +17,7 @@ root_path = "/home/jorgegmayorgas/taller_apis_nunca/"
 # Enruta la landing page (endpoint /)
 @app.route('/', methods=['GET'])
 def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
-    hello='<!DOCTYPE html><head><title>BOOOOOO</title></head><body>Bienvenido a mi API del modelo advertising!!! <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png"> <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png"> <link rel="manifest" href="icons/site.webmanifest"></body>'
+    hello='<!DOCTYPE html><head><title>BOOOOOO 2</title></head><body>Bienvenido a mi API del modelo advertising!!! <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png"> <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png"> <link rel="manifest" href="icons/site.webmanifest"></body>'
     return hello
 
 # Enruta la funcion al endpoint /api/v1/predict
