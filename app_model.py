@@ -63,10 +63,10 @@ def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
 def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
     model = pickle.load(open(root_path + '20240505_091754_random_forest.pkl','rb'))
-    lsepal = request.args.get('lsepal', None)
-    wsepal = request.args.get('wsepal', None)
-    lpetal = request.args.get('lpetal', None)
-    wpetal = request.args.get('wpetal', None)
+    lsepal = request.args.get('lsepal')
+    wsepal = request.args.get('wsepal')
+    lpetal = request.args.get('lpetal')
+    wpetal = request.args.get('wpetal')
     print(lsepal,wsepal,lpetal,wpetal)
     #print(type(tv))
     bln_error=False
