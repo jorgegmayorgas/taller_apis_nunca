@@ -78,10 +78,7 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
         bln_error=True
     if wpetal is None:
         bln_error=True
-    if bln_error:
-        return "All arguments are mandatory in order to predict"
-    else:
-        prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
+    prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
         #
     label_dict={'setosa':0,'versicolor':1,'virginica':2}
     label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
