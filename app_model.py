@@ -83,8 +83,17 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     label_dict={'setosa':0,'versicolor':1,'virginica':2}
     label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
     
-    return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
+    #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
+    return jsonify({'predictions': prediction[0]})
+# Enruta la funcion al endpoint /api/v1/flowerclasses
+@app.route('/api/v1/flowerclasses', methods=['GET'])
+def flowerclasses(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
+    label_dict={'setosa':0,'versicolor':1,'virginica':2}
+    label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
+    
+    #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
+    return jsonify(label_dict)
 
 # Enruta la funcion al endpoint /api/v1/retrain
 @app.route('/api/v1/retrain/', methods=['GET'])
