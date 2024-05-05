@@ -27,11 +27,11 @@ def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
     #return html_page
     return render_template('index.html')
 
-# Enruta la funcion al endpoint /api/v1/predict
+# Enruta la funcion al endpoint /api/v1/predicta
 @app.route('/api/v1/predict', methods=['GET'])
 def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
-    model = pickle.load(open(root_path + 'ad_model.pkl','rb'))
+    model = pickle.load(open(root_path + '20240505_091754_random_forest.pkl','rb'))
     lsepal = request.args.get('lsepal', None)
     wsepal = request.args.get('wsepal', None)
     lpetal = request.args.get('lpetal', None)
@@ -41,14 +41,14 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     #print(type(tv))
 
     if wsepal is None or lsepal is None or wpetal is None or lpetal:
-        return "Args empty, the data are not enough to predict"
+        return "All arguments are mandatory in order to predict"
     else:
-        prediction = model.predict([[float(tv),float(radio),float(newspaper)]])
+        prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
     
     label_dict={'setosa':0,'versicolor':1,'virginica':2}
     label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
     
-    return jsonify({'predictions': label_dict_reverse[prediction[0]]})
+    return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
 
 
 # Enruta la funcion al endpoint /api/v1/retrain
