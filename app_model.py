@@ -81,10 +81,10 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     if wpetal is None:
         bln_error=True
 
-    dict_get_values={'sepal_length_(cm)':lsepal,
-    'sepal_width_(cm)':wsepal,
-    'petal_length_(cm)':lpetal,
-    'petal_width_(cm)':wpetal}
+    dict_get_values={'sepal_length_(cm)':[lsepal],
+    'sepal_width_(cm)':[wsepal],
+    'petal_length_(cm)':[lpetal],
+    'petal_width_(cm)':[wpetal]}
     df_get_values=pd.DataFrame(dict_get_values)
     prediction = model.predict(df_get_values)
         #
