@@ -36,11 +36,18 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     wsepal = request.args.get('wsepal', None)
     lpetal = request.args.get('lpetal', None)
     wpetal = request.args.get('wpetal', None)
-    
     print(lsepal,wsepal,lpetal,wpetal)
     #print(type(tv))
-
-    if lsepal is None or wsepal is None or lpetal is None or wpetal is None:
+    bln_error=False
+    if lsepal is None:
+        bln_error=True
+    if wsepal is None:
+        bln_error=True
+    if lpetal is None:
+        bln_error=True
+    if wpetal is None:
+        bln_error=True
+    if bln_error:
         return "All arguments are mandatory in order to predict"
     else:
         prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
