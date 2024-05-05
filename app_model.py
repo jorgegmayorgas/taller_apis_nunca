@@ -9,7 +9,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 import urllib.request
 import matplotlib.pyplot as plt
 import keras
-import cv2
 import ast  # Module for literal_eval
 import matplotlib.pyplot as plt
 import random
