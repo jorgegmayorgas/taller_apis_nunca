@@ -3,7 +3,7 @@ import os
 import pickle
 import pandas as pd
 import subprocess
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request,render_template, send_from_directory
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import Lasso
 from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
@@ -20,25 +20,27 @@ def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
     
     #html='<!DOCTYPE html><head><title>BOOOOOO 2</title></head><body>Bienvenido a mi API del modelo advertising!!! <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png"> <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png"> <link rel="manifest" href="icons/site.webmanifest"></body>'
     #return html
-    landing_path = root_path + "/landing/"
-    full_path= landing_path + "index.html"
-    with open(full_path, 'r', encoding='utf-8') as file:
-        html_page = file.read()
-    return html_page
+    #landing_path = root_path + "/landing/"
+    #full_path= landing_path + "index.html"
+    #with open(full_path, 'r', encoding='utf-8') as file:
+    #    html_page = file.read()
+    #return html_page
+     return render_template('index.html')
 
 # Enruta la funcion al endpoint /api/v1/predict
 @app.route('/api/v1/predict', methods=['GET'])
 def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
     model = pickle.load(open(root_path + 'ad_model.pkl','rb'))
-    tv = request.args.get('tv', None)
-    radio = request.args.get('radio', None)
-    newspaper = request.args.get('newspaper', None)
+    wsepal = request.args.get('wsepal', None)
+    lsepal = request.args.get('lsepal', None)
+    wpetal = request.args.get('wpetal', None)
+    lpetal = request.args.get('lpetal', None)
+    
+    print(wsepal,lsepal,wpetal,lpetal)
+    #print(type(tv))
 
-    print(tv,radio,newspaper)
-    print(type(tv))
-
-    if tv is None or radio is None or newspaper is None:
+    if wsepal is None or lsepal is None or wpetal is None or lpetal:
         return "Args empty, the data are not enough to predict"
     else:
         prediction = model.predict([[float(tv),float(radio),float(newspaper)]])
