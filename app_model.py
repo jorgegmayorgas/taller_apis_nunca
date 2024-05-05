@@ -142,4 +142,5 @@ def webhook():
     else:
         return jsonify({'message': 'La solicitud no contiene datos JSON'}), 400
 if __name__=="__main__":
-    app.run()
+    #app.run()
+    app.run(host='0.0.0.0', port=5000)
