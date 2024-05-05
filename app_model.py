@@ -45,6 +45,8 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 root_path = "/home/jorgegmayorgas/taller_apis_nunca/"
 root_path ="/home/jorge/taller_apis_nunca/"
+label_dict={'setosa':0,'versicolor':1,'virginica':2}
+label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
 # Enruta la landing page (endpoint /)
 @app.route('/', methods=['GET'])
 def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
@@ -80,8 +82,7 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
         bln_error=True
     prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
         #
-    label_dict={'setosa':0,'versicolor':1,'virginica':2}
-    label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
+
     
     #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
     return jsonify({'predictions': prediction[0]})
@@ -89,12 +90,23 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
 @app.route('/api/v1/flowerclasses', methods=['GET'])
 def flowerclasses(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
-    label_dict={'setosa':0,'versicolor':1,'virginica':2}
-    label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
+    
     
     #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
     return jsonify(label_dict)
+# Enruta la funcion al endpoint /api/v1/labelflowerclasses
+@app.route('/api/v1/labelflowerclasses', methods=['GET'])
+def labelflowerclasses(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
+    #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
+    return jsonify(label_dict)
+# Enruta la funcion al endpoint /api/v1/labelflowerclasses
+@app.route('/api/v1/numericflowerclasses', methods=['GET'])
+def numericflowerclasses(): # Ligado al endpoint '/api/v1/predict', con el método GET
+
+    
+    #return jsonify({'predictions_label': label_dict_reverse[prediction[0]],'predictions': prediction[0]})
+    return jsonify(label_dict_reverse)
 # Enruta la funcion al endpoint /api/v1/retrain
 @app.route('/api/v1/retrain/', methods=['GET'])
 def retrain(): # Rutarlo al endpoint '/api/v1/retrain/', metodo GET
