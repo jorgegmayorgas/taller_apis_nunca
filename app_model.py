@@ -7,6 +7,48 @@ from flask import Flask, jsonify, request,render_template, send_from_directory
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import Lasso
 from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
+####
+import urllib.request
+import scripts.bootcampviztools as bt
+import scripts.toolbox_ML as tb
+import scripts.data_functions as dafu
+import matplotlib.pyplot as plt
+import keras
+import cv2
+import ast  # Module for literal_eval
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import pandas as pd
+import pickle
+import random
+import seaborn as sns
+import tensorflow as tf
+import torch
+import torch.nn as nn
+import tensorflow.keras.backend as K
+from PIL import Image
+from sklearn.model_selection import train_test_split,GridSearchCV,RandomizedSearchCV
+from sklearn.preprocessing import StandardScaler,MinMaxScaler,OneHotEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from skimage.io import imread
+from sklearn.utils import shuffle
+from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report, confusion_matrix,ConfusionMatrixDisplay,r2_score, mean_absolute_error, mean_squared_error,mean_absolute_percentage_error,r2_score
+from sklearn.model_selection import train_test_split,GridSearchCV,RandomizedSearchCV
+from sklearn.preprocessing import MinMaxScaler,MultiLabelBinarizer,OneHotEncoder,OrdinalEncoder,StandardScaler
+from sklearn.decomposition import PCA
+from tensorflow.keras import regularizers
+from keras.models import Sequential # De aquí sacamos el tipo de modelo que vamos a construir, que sigue siendo una secuencia o cadena de capas consecutivas
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
+from tensorflow.keras.regularizers import l2
+from keras.optimizers import Adam
+from tensorflow.keras.callbacks import LearningRateScheduler
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+import scripts.bootcampviztools as bc
+import scripts.data_functions as dafu
+import scripts.toolbox_ML as tb
 
 
 # os.chdir(os.path.dirname(__file__))
