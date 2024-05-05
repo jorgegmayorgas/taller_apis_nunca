@@ -40,7 +40,7 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     print(lsepal,wsepal,lpetal,wpetal)
     #print(type(tv))
 
-    if wsepal is None or lsepal is None or wpetal is None or lpetal:
+    if lsepal is None or wsepal is None or lpetal is None or wpetal is None:
         return "All arguments are mandatory in order to predict"
     else:
         prediction = model.predict([[float(lsepal),float(wsepal),float(lpetal),float(wpetal)]])
