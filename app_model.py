@@ -25,19 +25,19 @@ def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
     #with open(full_path, 'r', encoding='utf-8') as file:
     #    html_page = file.read()
     #return html_page
-     return render_template('index.html')
+    return render_template('index.html')
 
 # Enruta la funcion al endpoint /api/v1/predict
 @app.route('/api/v1/predict', methods=['GET'])
 def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
 
     model = pickle.load(open(root_path + 'ad_model.pkl','rb'))
-    wsepal = request.args.get('wsepal', None)
     lsepal = request.args.get('lsepal', None)
-    wpetal = request.args.get('wpetal', None)
+    wsepal = request.args.get('wsepal', None)
     lpetal = request.args.get('lpetal', None)
+    wpetal = request.args.get('wpetal', None)
     
-    print(wsepal,lsepal,wpetal,lpetal)
+    print(lsepal,wsepal,lpetal,wpetal)
     #print(type(tv))
 
     if wsepal is None or lsepal is None or wpetal is None or lpetal:
@@ -45,7 +45,10 @@ def predict(): # Ligado al endpoint '/api/v1/predict', con el método GET
     else:
         prediction = model.predict([[float(tv),float(radio),float(newspaper)]])
     
-    return jsonify({'predictions': prediction[0]})
+    label_dict={'setosa':0,'versicolor':1,'virginica':2}
+    label_dict_reverse={0:'setosa',1:'versicolor',2:'virginica'}
+    
+    return jsonify({'predictions': label_dict_reverse[prediction[0]]})
 
 
 # Enruta la funcion al endpoint /api/v1/retrain
