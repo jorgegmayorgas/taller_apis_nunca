@@ -52,6 +52,9 @@
             <li class="scroll-to-link" data-target="content-get-numeric-flower-classes">
                 <a>Get the numeric of the flower classes</a>
             </li>
+            <li class="scroll-to-link" data-target="content-predict-flower-class">
+                <a>Predict the flower class</a>
+            </li>
             <li class="scroll-to-link" data-target="content-errors">
                 <a>Errors</a>
             </li>
@@ -226,6 +229,63 @@ Result example :
                     <td>limit</td>
                     <td>Integer</td>
                     <td>(optional - default: 10) A limit on the number of objects to be returned, between 1 and 100.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="overflow-hidden content-section" id="content-predict-flower-class">
+            <h2>Predict the flower class</h2>
+            <pre><code class="bash">
+# Here is a curl example
+curl \
+-X GET https://jorgegmayorgas.pythonanywhere.com/api/v1/predict \
+                </code></pre>
+            <p>
+                To get the numeric flower classes you need to make a GET call to the following url :<br>
+                <code class="higlighted break-word">https://jorgegmayorgas.pythonanywhere.com/api/v1/predict</code>
+            </p>
+            <br>
+            <pre><code class="json">
+Result example :
+
+{
+    "0": "setosa",
+    "1": "versicolor",
+    "2": "virginica"
+}
+                </code></pre>
+            <h4>QUERY PARAMETERS</h4>
+            <table class="central-overflow-x">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    wsepal = request.args.get('wsepal')
+                    lpetal = request.args.get('lpetal')
+                    wpetal = request.args.get('wpetal')
+                    <td>lsepal</td>
+                    <td>Float</td>
+                    <td>Length of the sepal</td>
+                </tr>
+                <tr>
+                    <td>wsepal</td>
+                    <td>Float</td>
+                    <td>Width of the sepal</td>
+                </tr>
+                <tr>
+                    <td>lpetal</td>
+                    <td>Float</td>
+                    <td>Length of the petal</td>
+                </tr>
+                <tr>
+                    <td>wpetal</td>
+                    <td>Float</td>
+                    <td>Width of the petal</td>
                 </tr>
                 </tbody>
             </table>
