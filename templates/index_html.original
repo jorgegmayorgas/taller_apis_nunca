@@ -39,8 +39,8 @@
     <div class="mobile-menu-closer"></div>
     <div class="content-menu">
         <div class="content-infos">
-            <div class="info"><b>Version:</b> 0.0.1</div>
-            <div class="info"><b>Last Updated:</b> 6th May, 2024</div>
+            <div class="info"><b>Version:</b> 1.0.5</div>
+            <div class="info"><b>Last Updated:</b> 15th Sep, 2021</div>
         </div>
         <ul>
             <li class="scroll-to-link active" data-target="content-get-started">
@@ -63,26 +63,29 @@
             <pre>
     API Endpoint
 
-        https://jorgegmayorgas.pythonanywhere.com/
+        https://api.westeros.com/
                 </pre>
             <p>
-                Iris API provides programmatic access 
-                    To predict data from Iris Dataset
-                    To show the labels or the numeric equivalence of each class of flower
-                    To retrain Machine Learning model with additional data
+                The Westeros API provides programmatic access to read Game of Thrones data. Retrieve a character, provide an oauth connexion, retrieve a familly, filter them, etc.
             </p>
-            <p>To use this API, please follow examples below. You could use a browser for requests</p>
+            <p>
+                To use this API, you need an <strong>API key</strong>. Please contact us at <a href="mailto:jon.snow@nightswatch.wes">jon.snow@nightswatch.wes</a> to get your own API key.
+            </p>
         </div>
-        <div class="overflow-hidden content-section" id="content-get-labels-of-flowers">
-            <h2>Get the labels of the flower classes</h2>
+        <div class="overflow-hidden content-section" id="content-get-characters">
+            <h2>get characters</h2>
             <pre><code class="bash">
 # Here is a curl example
 curl \
--X GET https://jorgegmayorgas.pythonanywhere.com/labelflowerclasses \
+-X POST http://api.westeros.com/character/get \
+-F 'secret_key=your_api_key' \
+-F 'house=Stark,Bolton' \
+-F 'offset=0' \
+-F 'limit=50'
                 </code></pre>
             <p>
-                To get the labels of the flower classes you need to make a GET call to the following url :<br>
-                <code class="higlighted break-word">https://jorgegmayorgas.pythonanywhere.com/labelflowerclasses</code>
+                To get characters you need to make a POST call to the following url :<br>
+                <code class="higlighted break-word">http://api.westeros.com/character/get</code>
             </p>
             <br>
             <pre><code class="json">

@@ -18,7 +18,7 @@ root_path = "/home/jorgegmayorgas/taller_apis_nunca/"
 @app.route('/', methods=['GET'])
 def hello(): # Ligado al endopoint "/" o sea el home, con el método GET
     # Get the current working directory
-    landing_path = os.getcwd() + "/landing/"
+    landing_path = root_path + "/landing/"
     full_path=landing_path + "index.html"
     with open(full_path, 'r', encoding='utf-8') as file:
         html_page = file.read()
